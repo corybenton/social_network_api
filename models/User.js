@@ -15,8 +15,8 @@ const userSchema = new Schema(
             required: true, 
             match: /.+\@.+\..+/,
         },
-        thoughts: [thoughtSchema],
-        friends: [userSchema],
+        thoughts: [],
+        friends: [],
     },
     {
         toJSON: {
