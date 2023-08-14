@@ -24,7 +24,7 @@ Download project from github.  Start server with `node server.js' from command l
 
 ## Usage
 
-getUser - get ../api/users - no json
+getUser - get ../api/users - no json /n
 createUser - post ../api/users - json with username and email
 getSingleUser - get ../api/users/:userId - no json
 updateUser - post ../api/users/:userId - json with updated information
