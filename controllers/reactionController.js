@@ -1,5 +1,5 @@
 const Thought = require('../models/Thought');
-const reactionSchema = require('../models/Reaction');
+//const reactionSchema = require('../models/Reaction');
 
 module.exports = {
     async createReaction(req, res) {
