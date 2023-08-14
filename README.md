@@ -24,20 +24,20 @@ Download project from github.  Start server with `node server.js' from command l
 
 ## Usage
 
-getUser - get ../api/users - no json /n
-createUser - post ../api/users - json with username and email
-getSingleUser - get ../api/users/:userId - no json
-updateUser - post ../api/users/:userId - json with updated information
-deleteUser - delete ../api/users/:userId - no json - also deletes user's thoughts
-addFriend - post ../api/users/:userId/friends/:friendId - no json
-deleteFriend - delete ../api/users/:userId/friends/:friendId - no json
-getThoughts - get ../api/thoughts - no json
-createThought - post ../api/thoughts - json with username and thoughtText
-deleteThought - delete ../api/thoughts - json with _id
-editThought - put ../api/thoughts - json with _id and thoughtText
-getSingleThought - get ../api/thoughts/:thoughtId - no json
-createReaction - post ../api/thoughts/:thoughtId/reactions - json with reactionBody and username
-deleteReaction - delete ../api/thoughts/:thoughtId/reactions - json with _id
+- getUser - get ../api/users - no json 
+- createUser - post ../api/users - json with username and email
+- getSingleUser - get ../api/users/:userId - no json
+- updateUser - post ../api/users/:userId - json with updated information
+- deleteUser - delete ../api/users/:userId - no json - also deletes user's thoughts
+- addFriend - post ../api/users/:userId/friends/:friendId - no json
+- deleteFriend - delete ../api/users/:userId/friends/:friendId - no json
+- getThoughts - get ../api/thoughts - no json
+- createThought - post ../api/thoughts - json with username and thoughtText
+- deleteThought - delete ../api/thoughts - json with _id
+- editThought - put ../api/thoughts - json with _id and thoughtText
+- getSingleThought - get ../api/thoughts/:thoughtId - no json
+- createReaction - post ../api/thoughts/:thoughtId/reactions - json with reactionBody and username
+- deleteReaction - delete ../api/thoughts/:thoughtId/reactions - json with _id
 
 ## License
 
