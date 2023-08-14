@@ -29,11 +29,7 @@ const reactionSchema = new Schema(
 );
 
 function usableDate(createdAt) {
-    //if (getDate(now) === getDate(createdAt)) {
-    //    return createdAt.toTimeString();
-    //} else {
-        return createdAt.toDateString();
-    //}
+    return createdAt.toDateString();
 };
 
 module.exports = reactionSchema;
