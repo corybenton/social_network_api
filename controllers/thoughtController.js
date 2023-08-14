@@ -25,10 +25,10 @@ module.exports = {
     },
     async createThought(req, res) {
         try{
-            const thought = await Thought.create(req.body.thoughtText, req.body.username);
+            const thought = await Thought.create(req.body);
             const user = await User.findOneAndUpdate(
                 { username: req.body.username },
-                { thoughts: thought._id },
+                { $addToSet: { thoughts: thought.id } },
                 { new: true },
             )
 
@@ -36,7 +36,7 @@ module.exports = {
                 return res.status(404).json({ message: 'Missing or incorrect information' });
             }
 
-            res.json(thought, user);
+            res.json(thought);
         } catch (err) {
             res.status(500).json(err);
         }
@@ -44,9 +44,9 @@ module.exports = {
     async editThought(req, res) {
         try{
             const thought = await Thought.findOneAndUpdate(
-                { _id: req.params.thoughtId},
-                { thoughtText: req.body.thoughtText },
-                { new: true },
+                { _id: req.body },
+                { $set: req.body },
+                { new: true, upsert: true },
             )
 
             if (!thought) {
@@ -60,18 +60,17 @@ module.exports = {
     },
     async deleteThought(req, res) {
         try{
-            const thought = await Thought.findOneAndDelete({ _id: req.params.throughtId });
-            const user = await User.findOneAndDelete(
+            const thought = await Thought.findOneAndDelete({ _id: req.body._id });
+            await User.findOneAndUpdate(
                 { username: thought.username },
-                { thoughts: req.params.thoughtId },
-                { new: true },
+                { $pull: { thoughts: req.body._id } }
             )    
             
             if (!thought) {
                 return res.status(404).json({ message: 'No thought with that id' });
             }
 
-            res.json(thought, user);
+            res.json(thought);
         } catch (err) {
             res.status(500).json(err);
         }
