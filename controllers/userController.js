@@ -1,10 +1,11 @@
 const User = require('../models/User');
+const Thought = require('../models/Thought')
 
 module.exports = {
     async getUsers(req, res) {
         try{
             const users = await User.find();
-            res.json(users.username, users._id);
+            res.json(users);
         } catch (err) {
             res.status(500).json(err);
         }
@@ -48,10 +49,15 @@ module.exports = {
             const user = await User.findOneAndDelete({ _id: req.params.userId });
 
             if (!user) {
-                res.status(400).json({ message: 'No user with that ID' }); 
+                return res.status(400).json({ message: 'No user with that ID' }); 
             }
 
-            await Thought.deleteMany({ _id: { $in: user.thoughts }});
+            const thoughts = await Thought.deleteMany({ _id: { $in: user.thoughts } });
+            
+            if (!thoughts) {
+                res.status(400).json({ message: "User had no thoughts" });
+            }
+
             res.json({ message: 'User deleted' });
         } catch (err) {
             res.json(500).json(err);

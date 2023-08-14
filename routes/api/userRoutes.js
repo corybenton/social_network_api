@@ -10,9 +10,9 @@ const {
 
 router.route('/').get(getUsers).post(createUser);
 
-router.route('/:courseId')
+router.route('/:userId')
     .get(getSingleUser)
     .put(updateUser)
     .delete(deleteUser);
-    
+
 module.exports = router;
